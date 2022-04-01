@@ -10,6 +10,7 @@ const FILTER_MAP = {
   Completed: task => task.completed
 };
 const FILTER_NAMES = Object.keys(FILTER_MAP);
+const KEY = "MyApp";
 
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
@@ -17,7 +18,7 @@ function App(props) {
 
   //Load localStorage 
   useEffect(() => {
-    const tasks = JSON.parse(localStorage.getItem('Todos'));
+    const tasks = JSON.parse(localStorage.getItem(KEY + '.Todos'));
     if (tasks) {
       setTasks(tasks);
     }
@@ -25,7 +26,7 @@ function App(props) {
 
 //Save localStorage
   useEffect(() => {
-    localStorage.setItem('Todos', JSON.stringify(tasks));
+    localStorage.setItem(KEY + '.Todos', JSON.stringify(tasks));
   }, [tasks]);
 
   function toggleTaskCompleted(id) {

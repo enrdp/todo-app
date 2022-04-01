@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 
 export default function Todo(props) {
@@ -8,6 +7,7 @@ export default function Todo(props) {
     function handleChange(e) {
         setNewName(e.target.value);
       }
+
       
     function handleSubmit(e) {
         e.preventDefault();
