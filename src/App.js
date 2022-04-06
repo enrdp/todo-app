@@ -29,6 +29,22 @@ function App(props) {
     localStorage.setItem(KEY + '.Todos', JSON.stringify(tasks));
   }, [tasks]);
 
+  /*
+  function handleChangeSelect(e){
+    const { name, checked } = e.target;
+    if (name === "allSelect") {
+      let tempTask = tasks.map(task => {
+        return {...task, completed: checked }
+      });
+      setTasks(tempTask);
+    } else {
+      let tempTask = tasks.map(task =>
+        task.name === name ? { ...task, completed: checked } : task
+      );
+      setTasks(tempTask);
+    }
+  };
+*/
   function toggleTaskCompleted(id) {
     const updatedTasks = tasks.map(task => {
       if (id === task.id) {
@@ -42,6 +58,11 @@ function App(props) {
   function deleteTask(id) {
     const remainingTasks = tasks.filter(task => id !== task.id);
     setTasks(remainingTasks);
+  }
+
+  function deleteAll(){
+    const deleteTasks = tasks.filter(task => task !== task);
+    setTasks(deleteTasks);
   }
 
   function editTask(id, newName) {
@@ -70,6 +91,7 @@ function App(props) {
     toggleTaskCompleted={toggleTaskCompleted}
     deleteTask={deleteTask}
     editTask={editTask}
+    deleteAll={deleteAll}
   />
 ));
 
@@ -81,30 +103,38 @@ function App(props) {
       setFilter={setFilter}
     />
   ));
-  
 
-  const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task';
-  const headingText = `${taskList.length} ${tasksNoun} remaining`;
+  const tasksNoun = taskList.length !== 1 ? 'items' : 'item';
+  const headingText = `${taskList.length} ${tasksNoun} left`;
 
-
-      return (
+    return (
     <div className="todoapp stack-large">
       <h1>Todos</h1>
+      <div className="container-todo">
       <Form addTask={addTask} />
-      <div className="filters btn-group stack-exception">
-        {filterList}
-      </div>
-      <h2 id="list-heading">
-      {headingText}
-      </h2>
       <ul
         role="list"
         className="todo-list stack-large stack-exception"
         aria-labelledby="list-heading"
       >
       {taskList}
-
       </ul>
+      <div className="todo-footer">
+      <p id="list-heading">
+      {headingText}
+      </p>
+      <div className="filters btn-group stack-exception">
+        {filterList}
+      </div>
+      <button
+        type="button"
+        className="btn btn__delete-all"
+        onClick={deleteAll}
+      >
+      <span className="visually-hidden">Clear All</span>
+      </button>
+      </div>
+    </div>
     </div>
   );
 }

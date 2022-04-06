@@ -16,7 +16,6 @@ function Form(props) {
     <form onSubmit={handleSubmit}>
       <h2 className="label-wrapper">
         <label htmlFor="new-todo-input" className="label__lg">
-          What needs to be done?
         </label>
       </h2>
       <input
@@ -26,6 +25,7 @@ function Form(props) {
         name="text"
         autoComplete="off"
         value={name}
+        placeholder="What needs to be done?"
         onChange={handleChange}
       />
       <button type="submit" className="btn btn__primary btn__lg">
