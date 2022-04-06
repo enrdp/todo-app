@@ -98,10 +98,9 @@ body {
   background-color: #fff;
   margin: 0;
   font: inherit;
-  color: currentColor;
   width: 2.15em;
   height: 2.15em;
-  border: 0.15em solid currentColor;
+  border: 0.15em solid #E6E6E6;
   border-radius: 1.15em;
   transform: translateY(-0.075em);
   cursor: pointer;
@@ -181,7 +180,16 @@ body {
   border-bottom: none;
   border-radius: 0;
   width: 100%;
-  
+}
+.form-arrow{
+  position: absolute;
+  top: 30px;
+  left: 24px;
+  font-size: 25px;
+}
+.form-arrow path{
+  stroke-width: 3px;
+  color: #E6E6E6;
 }
 ul.todo-list{
   width: 100%;

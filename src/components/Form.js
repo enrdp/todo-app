@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BsChevronDown } from "react-icons/bs";
 
 function Form(props) {
   const [name, setName] = useState("");
@@ -14,10 +15,9 @@ function Form(props) {
   }
   return (
     <form onSubmit={handleSubmit}>
-      <h2 className="label-wrapper">
-        <label htmlFor="new-todo-input" className="label__lg">
-        </label>
-      </h2>
+      <div className="form-arrow">
+        <BsChevronDown />
+        </div>
       <input
         type="text"
         id="new-todo-input"
